@@ -1,0 +1,69 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"><!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="editor.php"><img src="images/cms-nav.png" class="img-responsive"></a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li><a href="../index.php">Go to website</a></li>
+
+
+                <li class="dropdown">
+
+                    <?php 
+
+                        if(isset($_SESSION)) {
+
+                            $user_fname = $_SESSION['user_firstname'];
+                            $user_lname = $_SESSION['user_lastname'];
+                            $user_id = $_SESSION['user_id'];
+                        }
+
+                    ?>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $user_fname." ".$user_lname; ?> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="editor_profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="../includes/logout.php?u_id=<?php echo $user_id; ?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <a href="editor.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#posts"><i class="fa fa-pencil"></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="posts" class="collapse">
+                            <li>
+                                <a href="./editor_posts.php">View all posts</a>
+                            </li>
+                            <li>
+                                <a href="editor_posts.php?source=editor_add_post">Add posts</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="./editor_categories.php"><i class="fa fa-bars"></i> Categories Page</a>
+                    </li>
+                    <li>
+                        <a href="editor_comments.php"><i class="fa fa-comments-o"></i> Comments</a>
+                    </li>
+                    <li>
+                        <a href="editor_profile.php"><i class="fa fa-user"></i> Profile</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+</nav>
